@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.mapper.BrandMapper">
+ 
+ <insert id="addCom"  parameterType="com.neuedu.pojo.Brand">
+     insert into brand(bCName,bName,briefIntro,reportType,reportUrl,brandPwd)
+      values(#{bCName},#{bName},#{briefIntro},#{reportType},#{reportUrl},#{brandPwd})
+ </insert>
+ 
+ <insert id="addBrand"  parameterType="BrandInformation">
+     insert into brandinformation(brandInforID,brandName,brandLogo)
+      values(#{brandInforID},#{brandName},#{brandLogo})
+ </insert>
+ 
+ <delete  id="deleteBrand"  parameterType="int">
+     delete from brandinformation where brandInforID=#{brandInforID}
+ </delete>
+ 
+  <select id="selectAllBrand" resultType="com.neuedu.pojo.BrandInformation">
+ 	select * from brandinformation
+ </select>
+ 
+ <select id="selectOneSeller" parameterType="String" resultType="Seller">
+ 	select * from seller where sName=#{sName}
+ </select>
+ 
+ <update  id="changeOneSeller"  parameterType="com.neuedu.pojo.Seller">
+     update seller set sName=#{sName},sEmail=#{sEmail},sPhone=${sPhone}
+      where sellerId=#{sellerId}
+ </update>
+ 
+ <select id="loginbrand" resultType="Brand" parameterType="Brand">
+     select * from brand where bCName=#{bCName}and brandPwd=#{brandPwd}
+ </select>
+ 
+  <select id="loginseller" resultType="Seller" parameterType="Seller">
+     select * from Seller where sName=#{sName}and sPwd=#{sPwd}
+ </select>
+ 
+  <insert id="addSeller"  parameterType="Seller">
+     insert into seller(sellerId,sName,sEmail,sPwd,sPhone)
+      values(#{sellerId},#{sName},#{sEmail},#{sPwd},#{sPhone})
+ </insert>
+ 
+
+</mapper>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.mapper.SellerWalletMapper">
+
+       <select id="selectOne" parameterType="SellerWallet" resultType="SellerWallet">
+       select * from sellerWallet where sName=#{sName} and sEmail=#{sEmail} and sPwd=#{sPwd}
+       </select>
+       
+       <update id="updatePwd" parameterType="SellerWallet">
+       update sellerWallet set sPwd=#{sPwd} where sName=#{sName}
+       </update>
+       
+       <select id="findWallet" resultType="WalletWater">
+       select * from walletWater 
+       </select>
+       
+       <update id="changeMoney" parameterType="SellerWallet">
+       update sellerWallet set aMoney=aMoney+#{aMoney} where sName=#{sName} and sPwd=#{sPwd}
+       </update>
+      
+</mapper>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.mapper.BrandWalletMapper">
+      
+       <select id="findBrandOne" parameterType="BrandWallet" resultType="BrandWallet">
+       select * from brandWallet where bNum=#{bNum} and bEmail=#{bEmail} and bPwd=#{bPwd}
+       </select>
+       
+       <select id="findAllWallet" resultType="WalletWater">
+       select * from walletWater 
+       </select>
+       
+       
+
+
+
+</mapper>

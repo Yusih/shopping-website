@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.mapper.OrderlistMapper" >
+<select id="selectSAE"  parameterType="Orderlist" resultType="Orderlist">
+	select *
+	from orderlist 
+	where orderState=#{orderState} and brandId=#{brandId}
+</select>
+
+<select id="selectSeller"  parameterType="Orderlist" resultType="Orderlist">
+	select *
+	from orderlist 
+	where orderState=#{orderState} and sellerId=#{sellerId}
+</select>
+
+
+<select id="selectOne"  parameterType="Orderlist" resultType="Orderlist">
+	select *
+	from orderlist 
+	where brandId=#{brandId} and orderId=#{orderId}
+</select>
+
+<update id="changeState"  parameterType="Orderlist">
+		update orderlist set orderNo=#{orderNo},orderState=#{orderState},orderTime=#{orderTime},trackingNo=#{trackingNo},quantity=#{quantity},title=#{title},price=#{price} 
+		where orderId=#{orderId}
+</update>
+
+<update id="payOrder"  parameterType="Orderlist">
+		update orderlist set orderState='paied' where orderId=#{orderId}
+</update>
+
+<delete id="deleteOrder" parameterType="Orderlist">
+	delete from orderlist where orderId=#{orderId}
+</delete>
+
+<insert id="addOrder" parameterType="Orderlist">
+	insert into orderlist (brandId,sku,price)  
+	values(#{brandId},#{sku},#{price})
+</insert>
+
+<select id="selectBySId" parameterType="Orderlist" resultType="Orderlist">
+	select * from orderlist where orderState=#{orderState} and sellerId=#{sellerId}
+</select>
+
+</mapper>

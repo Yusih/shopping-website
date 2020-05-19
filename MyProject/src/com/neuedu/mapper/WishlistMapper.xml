@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.mapper.WishlistMapper">
+
+	<select id="findWishlist" resultType="Wishlist">
+		select * from wishlist
+	</select>
+	
+	<select id="findOneWish" resultType="Wishlist" parameterType="String">
+		select * from wishlist where wishName=#{wishName}
+	</select>
+	
+	<delete id="deleteWish" parameterType="String">
+		delete from wishlist where wishName=#{wishName}
+	</delete>
+	
+	<insert id="addWishlist" parameterType="Wishlist">
+		insert into wishlist(wishName,wishPic,wishsku,wishPrice)
+		values(#{wishName},#{wishPic},#{wishsku},#{wishPrice})
+	</insert>
+</mapper>
